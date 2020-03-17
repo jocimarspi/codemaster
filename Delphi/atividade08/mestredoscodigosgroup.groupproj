@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{47BA296D-F73C-48A7-B2AC-A9EB8358501E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="mestredoscodigos.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="test.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="geometria\geometria.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="mestredoscodigos">
+        <MSBuild Projects="mestredoscodigos.dproj"/>
+    </Target>
+    <Target Name="mestredoscodigos:Clean">
+        <MSBuild Projects="mestredoscodigos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mestredoscodigos:Make">
+        <MSBuild Projects="mestredoscodigos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="test">
+        <MSBuild Projects="test.dproj"/>
+    </Target>
+    <Target Name="test:Clean">
+        <MSBuild Projects="test.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="test:Make">
+        <MSBuild Projects="test.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="geometria">
+        <MSBuild Projects="geometria\geometria.dproj"/>
+    </Target>
+    <Target Name="geometria:Clean">
+        <MSBuild Projects="geometria\geometria.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="geometria:Make">
+        <MSBuild Projects="geometria\geometria.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="mestredoscodigos;test;geometria"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="mestredoscodigos:Clean;test:Clean;geometria:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="mestredoscodigos:Make;test:Make;geometria:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

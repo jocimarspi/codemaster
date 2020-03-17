@@ -1,0 +1,11 @@
+Projeto submetido para prova delphi referente ao item abaixo
+===================================================================
+8) Criar uma DLL para calcular a área e o perímetro de pelo menos 3 tipos de figuras geométricas retornando o número por extenso.
+
+
+Passos para compilação
+===================================================================
+1. Abrir o delphi
+2. Escolher o grupo de projetos "grupomestredoscodigos.groupproj"
+3. Dar build no projeto "geometria.dll"
+4. Compilar e executar o projetos "mestredoscodigos.exe"

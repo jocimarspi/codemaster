@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{18D605C2-DAD5-4D2D-BC78-F1506A393415}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="infullconsole.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dll\infulllib.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="test\infulltest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="infullconsole">
+        <MSBuild Projects="infullconsole.dproj"/>
+    </Target>
+    <Target Name="infullconsole:Clean">
+        <MSBuild Projects="infullconsole.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="infullconsole:Make">
+        <MSBuild Projects="infullconsole.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="infulllib">
+        <MSBuild Projects="dll\infulllib.dproj"/>
+    </Target>
+    <Target Name="infulllib:Clean">
+        <MSBuild Projects="dll\infulllib.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="infulllib:Make">
+        <MSBuild Projects="dll\infulllib.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="infulltest">
+        <MSBuild Projects="test\infulltest.dproj"/>
+    </Target>
+    <Target Name="infulltest:Clean">
+        <MSBuild Projects="test\infulltest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="infulltest:Make">
+        <MSBuild Projects="test\infulltest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="infullconsole;infulllib;infulltest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="infullconsole:Clean;infulllib:Clean;infulltest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="infullconsole:Make;infulllib:Make;infulltest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

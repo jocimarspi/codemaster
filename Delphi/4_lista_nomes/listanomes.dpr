@@ -6,7 +6,9 @@ program listanomes;
 
 uses
   System.SysUtils,
-  uConsole in 'uConsole.pas';
+  uConsole in 'uConsole.pas',
+  uCapitalize in 'uCapitalize.pas';
+
 var
   MyConsole: TConsole;
 begin

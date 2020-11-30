@@ -34,8 +34,10 @@ begin
     if not ValidNumber then
     begin
       Writeln('Número inválido');
+      Writeln('[ENTER] Continuar [CTRL + C] Sair');
+
       Writeln('');
-      Exit;
+      Readln;
     end;
   until ValidNumber;
 

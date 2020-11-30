@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{90AADF75-24AB-4088-9D6F-DA916F165E45}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="e06_geometric.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dll\geometriclib.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="e06_geometric">
+        <MSBuild Projects="e06_geometric.dproj"/>
+    </Target>
+    <Target Name="e06_geometric:Clean">
+        <MSBuild Projects="e06_geometric.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="e06_geometric:Make">
+        <MSBuild Projects="e06_geometric.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="geometriclib">
+        <MSBuild Projects="dll\geometriclib.dproj"/>
+    </Target>
+    <Target Name="geometriclib:Clean">
+        <MSBuild Projects="dll\geometriclib.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="geometriclib:Make">
+        <MSBuild Projects="dll\geometriclib.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="e06_geometric;geometriclib"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="e06_geometric:Clean;geometriclib:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="e06_geometric:Make;geometriclib:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

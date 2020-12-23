@@ -57,8 +57,9 @@ type
     Splitter1: TSplitter;
     procedure FormCreate(Sender: TObject);
     procedure cdsUsersAfterPost(DataSet: TDataSet);
+    procedure cdsUsersAfterDelete(DataSet: TDataSet);
   private
-    { Private declarations }
+    procedure Save;
   public
     { Public declarations }
   end;
@@ -73,19 +74,14 @@ uses
 
 {$R *.dfm}
 
-procedure TXMLDatasetF.cdsUsersAfterPost(DataSet: TDataSet);
-var
-  convert: TConvertUserXML;
+procedure TXMLDatasetF.cdsUsersAfterDelete(DataSet: TDataSet);
 begin
-  if not Showing then
-    Exit;
+  Save;
+end;
 
-  convert := TConvertUserXML.Create;
-  try
-    convert.DatasetToXML(cdsUsers);
-  finally
-    FreeAndNil(convert);
-  end;
+procedure TXMLDatasetF.cdsUsersAfterPost(DataSet: TDataSet);
+begin
+  Save;
 end;
 
 procedure TXMLDatasetF.FormCreate(Sender: TObject);
@@ -97,6 +93,21 @@ begin
   convert := TConvertUserXML.Create;
   try
     convert.XMLToDataset(cdsUsers);
+  finally
+    FreeAndNil(convert);
+  end;
+end;
+
+procedure TXMLDatasetF.Save;
+var
+  convert: TConvertUserXML;
+begin
+  if not Showing then
+    Exit;
+
+  convert := TConvertUserXML.Create;
+  try
+    convert.DatasetToXML(cdsUsers);
   finally
     FreeAndNil(convert);
   end;

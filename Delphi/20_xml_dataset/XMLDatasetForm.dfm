@@ -30,8 +30,6 @@ object XMLDatasetF: TXMLDatasetF
     Height = 481
     Align = alRight
     TabOrder = 0
-    ExplicitLeft = 384
-    ExplicitHeight = 561
     DesignSize = (
       354
       481)
@@ -147,9 +145,6 @@ object XMLDatasetF: TXMLDatasetF
       DataSource = dsUsers
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = -135
-      ExplicitTop = 0
-      ExplicitWidth = 320
     end
     object DBEdit1: TDBEdit
       Left = 16
@@ -180,7 +175,6 @@ object XMLDatasetF: TXMLDatasetF
       DataField = 'last_name'
       DataSource = dsUsers
       TabOrder = 3
-      ExplicitWidth = 230
     end
     object DBEdit4: TDBEdit
       Left = 16
@@ -377,6 +371,7 @@ object XMLDatasetF: TXMLDatasetF
     Aggregates = <>
     Params = <>
     AfterPost = cdsUsersAfterPost
+    AfterDelete = cdsUsersAfterDelete
     Left = 168
     Top = 56
     object cdsUsersid: TIntegerField
@@ -401,7 +396,7 @@ object XMLDatasetF: TXMLDatasetF
       DisplayLabel = 'Data nascimento'
       FieldName = 'dob'
       DisplayFormat = 'dd/mm/yyyy'
-      EditMask = '!99/99/9999;0;_'
+      EditMask = '!99/99/9999;1;_'
     end
     object cdsUsersemail: TStringField
       DisplayLabel = 'E-mail'

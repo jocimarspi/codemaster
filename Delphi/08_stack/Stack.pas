@@ -7,9 +7,9 @@ uses
   System.Generics.Collections;
 
 type
-  TStack<T> = class
+  TMyStack<T> = class
   private
-    FStack: TList<T>;
+    FStack: TStack<T>;
     function GetItem(Index: Integer): T;
   public
     property Item[Index: Integer]: T read GetItem;
@@ -27,18 +27,18 @@ implementation
 
 { TStack<T> }
 
-constructor TStack<T>.Create;
+constructor TMyStack<T>.Create;
 begin
-  FStack := TList<T>.Create;
+  FStack := TStack<T>.Create;
 end;
 
-destructor TStack<T>.Destroy;
+destructor TMyStack<T>.Destroy;
 begin
   FreeAndNil(FStack);
   inherited;
 end;
 
-function TStack<T>.GetItem(Index: Integer): T;
+function TMyStack<T>.GetItem(Index: Integer): T;
 begin
   if Index > Pred(FStack.Count) then
     Exit;
@@ -46,32 +46,28 @@ begin
   if Index < 0 then
     Exit;
 
-  Result := FStack.Items[Pred(FStack.Count) - Index];
+  Result := FStack.List[Pred(FStack.Count) - Index];
 end;
 
-function TStack<T>.IsEmpty: Boolean;
+function TMyStack<T>.IsEmpty: Boolean;
 begin
   Result := FStack.Count = 0;
 end;
 
-function TStack<T>.Pop: T;
-var
-  item: T;
+function TMyStack<T>.Pop: T;
 begin
   if IsEmpty then
     Exit;
 
-  item := FStack.Last;
-  FStack.Delete(FStack.LastIndexOf(FStack.Last));
-  Result := item;
+  Result := FStack.Pop;
 end;
 
-procedure TStack<T>.Push(AItem: T);
+procedure TMyStack<T>.Push(AItem: T);
 begin
-  FStack.Add(AItem);
+  FStack.Push(AItem);
 end;
 
-function TStack<T>.Size: Integer;
+function TMyStack<T>.Size: Integer;
 begin
   Result := FStack.Count;
 end;

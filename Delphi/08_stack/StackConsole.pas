@@ -9,8 +9,8 @@ uses
 type
   TStackConsole = class
   private
-    FIntegerStack: TStack<Integer>;
-    FStringStack: TStack<String>;
+    FIntegerStack: TMyStack<Integer>;
+    FStringStack: TMyStack<String>;
 
     procedure PrintTitle;
 
@@ -44,8 +44,8 @@ const
 
 constructor TStackConsole.Create;
 begin
-  FIntegerStack := TStack<Integer>.Create;
-  FStringStack  := TStack<String>.Create;
+  FIntegerStack := TMyStack<Integer>.Create;
+  FStringStack  := TMyStack<String>.Create;
 end;
 
 destructor TStackConsole.Destroy;

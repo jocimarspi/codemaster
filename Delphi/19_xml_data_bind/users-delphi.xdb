@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xdb="http://www.borland.com/schemas/delphi/10.0/XMLDataBinding">
+  <xs:element name="response" type="responseType"/>
+  <xs:complexType name="responseType"><xs:annotation>
+      <xs:appinfo xdb:docElement="response"/>
+    </xs:annotation>
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="_meta" type="_metaType"/>
+      <xs:element name="result" type="resultType"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="_metaType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="success" type="xs:string"/>
+      <xs:element name="code" type="xs:integer"/>
+      <xs:element name="message" type="xs:string"/>
+      <xs:element name="totalCount" type="xs:integer"/>
+      <xs:element name="pageCount" type="xs:integer"/>
+      <xs:element name="currentPage" type="xs:integer"/>
+      <xs:element name="perPage" type="xs:integer"/>
+      <xs:element name="rateLimit" type="rateLimitType"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="rateLimitType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="limit" type="xs:integer"/>
+      <xs:element name="remaining" type="xs:integer"/>
+      <xs:element name="reset" type="xs:integer"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="resultType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="item" type="itemType" maxOccurs="unbounded"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="itemType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="id" type="xs:integer"/>
+      <xs:element name="first_name" type="xs:string"/>
+      <xs:element name="last_name" type="xs:string"/>
+      <xs:element name="gender" type="xs:string"/>
+      <xs:element name="dob" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+      <xs:element name="phone" type="xs:string"/>
+      <xs:element name="website" type="xs:string"/>
+      <xs:element name="address" type="xs:string"/>
+      <xs:element name="status" type="xs:string"/>
+      <xs:element name="_links" type="_linksType"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="_linksType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="self" type="selfType"/>
+      <xs:element name="edit" type="editType"/>
+      <xs:element name="avatar" type="avatarType"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="selfType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="href" type="xs:string"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="editType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="href" type="xs:string"/>
+    </sequence>
+  </xs:complexType>
+  <xs:complexType name="avatarType">
+    <sequence xmlns="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="href" type="xs:string"/>
+    </sequence>
+  </xs:complexType>
+</xs:schema>

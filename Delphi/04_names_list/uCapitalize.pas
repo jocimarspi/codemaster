@@ -21,7 +21,7 @@ implementation
 
 const
   SPACE_DELIMITER = ' ';
-  PREPOSITIONS: Array[0..3] of String = ('de', 'do', 'dos', 'e');
+  PREPOSITIONS: Array[0..5] of String = ('da', 'das', 'de', 'do', 'dos', 'e');
 
 
 { TCapitalize }

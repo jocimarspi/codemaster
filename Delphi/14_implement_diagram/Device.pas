@@ -3,11 +3,10 @@ unit Device;
 interface
 
 uses
-  System.SysUtils,
-  PrinterDevice;
+  System.SysUtils;
 
 type
-  TDevice = class(TPrinter)
+  TDevice = class
   private
     FCor: String;
     FAtivo: Boolean;

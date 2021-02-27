@@ -25,7 +25,7 @@ begin
   Result := false;
 
   if Self.IsEmpty then
-    exit;
+    Exit;
 
   Self.Sort;
 

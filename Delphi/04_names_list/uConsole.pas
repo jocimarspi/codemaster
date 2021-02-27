@@ -17,7 +17,6 @@ type
     FHasName: Boolean;
     procedure AddName;
     function HasName: Boolean;
-    procedure CapitalizeNames;
     procedure ShowCapitalizedNames;
   public
     constructor Create;
@@ -39,7 +38,10 @@ begin
   FHasName  := not Name.Trim.IsEmpty;
 
   if FHasName then
-    FNamesList.Add(Name.Trim);
+  begin
+    Name := FCapitalize.Capitalize(Name.Trim);
+    FNamesList.Add(Name);
+  end;
 end;
 
 constructor TConsole.Create;
@@ -61,14 +63,6 @@ begin
   Result := FHasName;
 end;
 
-procedure TConsole.CapitalizeNames;
-var
-  Index: Integer;
-begin
-  for Index := 0 to FNamesList.Count - 1 do
-    FNamesList[Index] :=  FCapitalize.Capitalize(FNamesList[Index]);
-end;
-
 procedure TConsole.Run;
 begin
   FNamesList.Clear;
@@ -80,8 +74,6 @@ begin
     repeat
       AddName;
     until not HasName;
-
-    CapitalizeNames;
 
     ShowCapitalizedNames;
 

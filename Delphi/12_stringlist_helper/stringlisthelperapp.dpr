@@ -22,6 +22,33 @@ begin
       valuesList.Values['phone'] := '(44) 9 9942-1641';
 
       WriteLn(valuesList.ToJson);
+
+      valuesList.Clear;
+      if valuesList.HasDuplicate then
+        WriteLn('Tem duplicados.')
+      else
+        WriteLn('Não possui duplicados');
+
+      valuesList.Clear;
+      valuesList.Add('jocimar');
+      valuesList.Add('Mariana');
+      valuesList.Add('jocimar');
+
+      if valuesList.HasDuplicate then
+        WriteLn('Tem duplicados.')
+      else
+        WriteLn('Não possui duplicados');
+
+      valuesList.Clear;
+      valuesList.Add('eduardo');
+      valuesList.Add('mariana');
+      valuesList.Add('jocimar');
+
+      if valuesList.HasDuplicate then
+        WriteLn('Tem duplicados.')
+      else
+        WriteLn('Não possui duplicados');
+
       ReadLn;
     finally
       FreeAndNil(valuesList);

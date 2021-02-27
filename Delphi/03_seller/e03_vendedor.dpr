@@ -97,9 +97,7 @@ begin
       Writeln;
       Writeln(vend.ToString);
 
-      valorAReceber := vend.SalarioFixo + vend.ValorComissao;
-
-      Writeln(Format('Total a receber: %f', [valorAReceber]));
+      Writeln(Format('Total a receber: %f', [vend.ValorReceber]));
     finally
       FreeAndNil(vend);
     end;

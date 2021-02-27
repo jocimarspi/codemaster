@@ -16,6 +16,7 @@ type
     procedure SetSalarioFixo(const Value: Currency);
     procedure SetTotalVendas(const Value: Currency);
     function GetValorComissao: Currency;
+    function GetValorReceber: Currency;
   public
     constructor Create;
     property Nome: String read FNome write SetNome;
@@ -23,6 +24,7 @@ type
     property TotalVendas: Currency read FTotalVendas write SetTotalVendas;
     property PercentualComissao: Double read FPercetualComissao;
     property ValorComissao: Currency read GetValorComissao;
+    property ValorReceber: Currency read GetValorReceber;
 
     function ToString: String; override;
   end;
@@ -47,6 +49,11 @@ end;
 function TVendedor.GetValorComissao: Currency;
 begin
   Result := (FTotalVendas * FPercetualComissao) / 100;
+end;
+
+function TVendedor.GetValorReceber: Currency;
+begin
+  result := FSalarioFixo + GetValorComissao;
 end;
 
 procedure TVendedor.SetNome(const Value: String);

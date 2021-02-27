@@ -3,10 +3,11 @@ unit PrinterDevice;
 interface
 
 uses
+  Device,
   Multifunctional;
 
 type
-  TPrinter = class
+  TPrinter = class(TDevice)
   private
     FMultiFunctional: TMultifunctional;
   public

@@ -15,33 +15,33 @@ uses
   ScannerIntf in 'ScannerIntf.pas';
 
 var
-  device: TDevice;
+  printer: TPrinter;
 
 begin
   try
-    device := TDevice.Create;
+    printer := TPrinter.Create;
     try
-      device.Marca := 'HP';
-      device.Modelo := 'Deskjet 3050';
-      device.Cor := 'Preta';
-      device.NumeroSerie := '49CJ4939DJ5JJ9339M';
-      device.TipoDispositivo := 'Multifunctional';
-      device.DataCompra := Now;
-      device.DataCadastro := Now;
-      device.Ativo := False;
+      printer.Marca := 'HP';
+      printer.Modelo := 'Deskjet 3050';
+      printer.Cor := 'Preta';
+      printer.NumeroSerie := '49CJ4939DJ5JJ9339M';
+      printer.TipoDispositivo := 'Multifunctional';
+      printer.DataCompra := Now;
+      printer.DataCadastro := Now;
+      printer.Ativo := False;
 
-      WriteLn(device.ToString);
+      WriteLn(printer.ToString);
       WriteLn;
 
-      device.MultiFunctional.Scan;
-      device.MultiFunctional.Copy;
-      device.MultiFunctional.Print;
-      device.MultiFunctional.Send;
-      device.MultiFunctional.Receive;
+      printer.MultiFunctional.Scan;
+      printer.MultiFunctional.Copy;
+      printer.MultiFunctional.Print;
+      printer.MultiFunctional.Send;
+      printer.MultiFunctional.Receive;
 
       ReadLn;
     finally
-      FreeAndNil(device);
+      FreeAndNil(printer);
     end;
   except
     on E: Exception do
